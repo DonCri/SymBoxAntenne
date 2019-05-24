@@ -1,0 +1,14 @@
+{
+	"id": "{1053BDCE-A992-66C5-8652-7AE1E934EDC8}",
+	"name": "SymAnRohdaten",
+	"type": 3,
+	"vendor": "BRELAG",
+	"aliases":
+	[
+		"eGate Rohdaten"
+	],
+	"parentRequirements": ["{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
+	"childRequirements": [],
+	"implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}"],
+	"prefix": "DonCri"
+}

@@ -1,0 +1,14 @@
+{
+	"id": "{D321B07A-21CD-FA82-7E9B-C922289A765C}",
+	"name": "SymBoxAntenne",
+	"type": 1,
+	"vendor": "DonCri",
+	"aliases":
+	[
+		"SymBox Antenne"
+	],
+	"parentRequirements": ["{4A550680-80C5-4465-971E-BBF83205A02B}"],
+	"childRequirements": ["{8461A6B8-8FC3-5E4D-CFA3-6D3C23F9A547}"],
+	"implemented": ["{E39B5F36-330E-8914-126E-E5105CFCD54D}", "{FD7FF32C-331E-4F6B-8BA8-F73982EF5AA7}"],
+	"prefix": "DonCri"
+}

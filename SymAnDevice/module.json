@@ -1,0 +1,14 @@
+{
+    "id": "{89E92EEA-92CA-E873-F599-1BE9800C0698}",
+    "name": "DeviceTest",
+    "type": 3,
+    "vendor": "DonCri",
+    "aliases":
+        [
+            "Device"
+        ],
+    "parentRequirements": ["{E39B5F36-330E-8914-126E-E5105CFCD54D}"],
+    "childRequirements": [],
+    "implemented": ["{8461A6B8-8FC3-5E4D-CFA3-6D3C23F9A547}"],
+    "prefix": "DonCri"
+}
