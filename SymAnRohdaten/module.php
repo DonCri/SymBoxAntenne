@@ -19,7 +19,11 @@ class SymAnRohdaten extends IPSModule {
             // Diese Zeile nicht löschen.
 		parent::Create();
 
-		 $this->RegisterVariableString("eGate", "eGate Werte", "", "0");
+		$this->RegisterVariableString("eGate", "eGate Werte", "", "0");
+		$this->RegisterVariableBoolean("Command", "Befehl", "~Switch", "0");
+		$this->EnableAction("Command");
+
+		$this->RegisterPropertyString("Adresse", "");
 
 
         }
@@ -51,6 +55,44 @@ class SymAnRohdaten extends IPSModule {
 		SetValue($this->GetIDForIdent("eGate"), bin2hex(print_r($data->Buffer, true)));
 
 	}
+	
+	public function BefehlTest(bool $Command) {
+
+		$Adresse = GetValue(GetIDForIdent("Adresse"));
+		$resultat = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => "c2a0" . $Command . $Adresse . "0000" . "05")));
+	
+	
+	}
+
+	
+	public function RequestAction($Ident, $Value) {
+
+		switch($Ident) {
+        	case "Command":
+				//Neuen Wert in die Statusvariable schreiben
+					SetValue($this->GetIDForIdent($Ident), $Value);
+
+			break;
+			case "lowerValueSun":
+				//Neuen Wert in die Statusvariable schreiben
+				SetValue($this->GetIDForIdent($Ident), $Value);
+			break;
+			case "upperValueWind":
+				//Neuen Wert in die Statusvariable schreiben
+				SetValue($this->GetIDForIdent($Ident), $Value);
+			break;
+			case "lowerValueWind":
+				//Neuen Wert in die Statusvariable schreiben
+				SetValue($this->GetIDForIdent($Ident), $Value);
+			break;
+			case "StateChangeSun":
+				//Neuen Wert in die Statusvariable schreiben
+				SetValue($this->GetIDForIdent($Ident), $Value);
+				$this->BeschattungAktivDeaktiv();
+			break;
+			}
+
+    }
 
     }
 
