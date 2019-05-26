@@ -74,7 +74,7 @@ class SymAnRohdaten extends IPSModule {
 					
 					
 					SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
-					return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $FSSBefehl)));	
+					return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $JSONString)));	
 				break;
 			}
  
