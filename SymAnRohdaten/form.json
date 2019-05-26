@@ -1,5 +1,6 @@
 {
   "elements":
   [
+	{"type" : "ValidationTextBox", "name": "Adresse", "caption": "Senderadresse"}
   ]
 }
