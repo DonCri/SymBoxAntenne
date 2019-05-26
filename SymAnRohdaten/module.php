@@ -59,7 +59,7 @@ class SymAnRohdaten extends IPSModule {
 	public function BefehlTest() {
 
 			$Value = GetValue($this->GetIDForIdent("Command"));
-			$Adresse = GetValue(ReadPropertyString("Adresse"));
+			$Adresse = GetValue($this->ReadPropertyString("Adresse"));
 
 			switch($Value)
 			{
