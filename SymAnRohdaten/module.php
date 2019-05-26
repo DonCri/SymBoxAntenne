@@ -66,17 +66,7 @@ class SymAnRohdaten extends IPSModule {
     	// z.B. CRC prüfen, in Einzelteile zerlegen
  
     	// Weiterleiten zur I/O Instanz
-    	$Value = GetValue($this->GetIDForIdent("Command"));
-
-			switch($Value)
-			{
-				case true:
-					
-					
-					SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
-					return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $JSONString)));	
-				break;
-			}
+    	return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $JSONString)));	
  
     	// Weiterverarbeiten und durchreichen
     	return $resultat;
@@ -91,9 +81,20 @@ class SymAnRohdaten extends IPSModule {
         	case "Command":
 				//Neuen Wert in die Statusvariable schreiben
 					SetValue($this->GetIDForIdent($Ident), $Value);
-					$FSSBefehl = hex2bin("c2a0" . "01" . $this->ReadPropertyString("Adresse") . "0000" . "05" . "00");
-					$this->ForwardData($FSSBefehl);	
-			break;
+					
+					$Value = GetValue($this->GetIDForIdent("Command"));
+
+					switch($Value)
+					{
+						case true:
+							$FSSBefehl = hex2bin("c2a0" . "01" . $this->ReadPropertyString("Adresse") . "0000" . "05" . "00");
+							$this->ForwardData($FSSBefehl);	
+							SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
+								
+						break;
+					}	
+
+								break;
 			case "lowerValueSun":
 				//Neuen Wert in die Statusvariable schreiben
 				SetValue($this->GetIDForIdent($Ident), $Value);
