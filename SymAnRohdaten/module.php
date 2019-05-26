@@ -91,7 +91,7 @@ class SymAnRohdaten extends IPSModule {
         	case "Command":
 				//Neuen Wert in die Statusvariable schreiben
 					SetValue($this->GetIDForIdent($Ident), $Value);
-					$this->BefehlTest();	
+					$this->ForwardData();	
 			break;
 			case "lowerValueSun":
 				//Neuen Wert in die Statusvariable schreiben
