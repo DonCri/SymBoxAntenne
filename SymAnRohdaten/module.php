@@ -56,11 +56,12 @@ class SymAnRohdaten extends IPSModule {
 
 	}
 	
-	public function BefehlTest(bool $Command) {
+	public function BefehlTest() {
 
+			$Value = GetValue(GetIDForIdent("Command"));
 			$Adresse = GetValue(GetIDForIdent("Adresse"));
 
-			switch($Command)
+			switch($Value)
 			{
 				case true:
 					return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => hex2bin("c2a0" . $Command . $Adresse . "0000" . "05"))));	
