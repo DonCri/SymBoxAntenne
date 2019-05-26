@@ -58,8 +58,15 @@ class SymAnRohdaten extends IPSModule {
 	
 	public function BefehlTest(bool $Command) {
 
-		$Adresse = GetValue(GetIDForIdent("Adresse"));
-		$resultat = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => "c2a0" . $Command . $Adresse . "0000" . "05")));
+			$Adresse = GetValue(GetIDForIdent("Adresse"));
+
+			switch($Command)
+			{
+				case true:
+					return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => "c2a0" . $Command . $Adresse . "0000" . "05")));	
+				break;
+			}
+	
 	
 	
 	}
@@ -71,7 +78,7 @@ class SymAnRohdaten extends IPSModule {
         	case "Command":
 				//Neuen Wert in die Statusvariable schreiben
 					SetValue($this->GetIDForIdent($Ident), $Value);
-
+					$this->BefehlTest();	
 			break;
 			case "lowerValueSun":
 				//Neuen Wert in die Statusvariable schreiben
