@@ -56,25 +56,7 @@ class SymAnRohdaten extends IPSModule {
 
 	}
 
-	public function ForwardData($JSONString) {
- 
-    	// Empfangene Daten von der Device Instanz
-    	$data = json_decode($JSONString);
-    	IPS_LogMessage("ForwardData", utf8_decode($data->Buffer));
- 
-    	// Hier würde man den Buffer im Normalfall verarbeiten
-    	// z.B. CRC prüfen, in Einzelteile zerlegen
- 
-    	// Weiterleiten zur I/O Instanz
-    	return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $JSONString)));	
- 
-    	// Weiterverarbeiten und durchreichen
-    	return $resultat;
- 
-	}
-	
-
-	
+		
 	public function RequestAction($Ident, $Value) {
 
 		switch($Ident) {
@@ -82,14 +64,14 @@ class SymAnRohdaten extends IPSModule {
 				//Neuen Wert in die Statusvariable schreiben
 					SetValue($this->GetIDForIdent($Ident), $Value);
 					
-					$Value = GetValue($this->GetIDForIdent("Command"));
+					$Button = GetValue($this->GetIDForIdent("Command"));
 
-					switch($Value)
+					switch($Button)
 					{
 						case true:
 							$FSSBefehl = hex2bin("c2a0" . "01" . $this->ReadPropertyString("Adresse") . "0000" . "05" . "00");
-							$this->ForwardData($FSSBefehl);	
 							SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
+							return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $FSSBefehle)));	
 								
 						break;
 					}	
