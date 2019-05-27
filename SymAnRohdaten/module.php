@@ -69,7 +69,7 @@ class SymAnRohdaten extends IPSModule {
 					switch($Button)
 					{
 						case true:
-								$Befehl = "c2a0" . "01" . $this->ReadPropertyString("Adresse") . "0000" . "05";
+								$Befehl = "01" . $this->ReadPropertyString("Adresse") . "0000" . "05" . "00";
 								$FSSBefehl = base_convert($Befehl, 16, 2);
 
 							SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
