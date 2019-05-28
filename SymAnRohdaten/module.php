@@ -69,11 +69,10 @@ class SymAnRohdaten extends IPSModule {
 					switch($Button)
 					{
 						case true:
-								$FSSBefehl = hex2bin("c2a0" . "01" . $this->ReadPropertyString("Adresse") . "0000" . "05");
-								$Prio = "";
+								$FSSBefehl = "\xc2\xa0\x01\x$this->ReadPropertyString("Adresse")\x0000\x05";
 
 							SetValue($this->GetIDForIdent("eGate"), bin2hex($FSSBefehl));
-							return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $FSSBefehl . $Prio)));	
+							return $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $FSSBefehl)));	
 								
 						break;
 					}	
