@@ -52,7 +52,7 @@ class SymAnRohdaten extends IPSModule {
 	    $data = json_decode($JSONString);
 
 	    // Datenverarbeitung und schreiben der Werte in die Statusvariablen
-		SetValue($this->GetIDForIdent("eGate"), print_r($data->Buffer, true));
+		SetValue($this->GetIDForIdent("eGate"), print_r($data->Values, true));
 
 	}
 
